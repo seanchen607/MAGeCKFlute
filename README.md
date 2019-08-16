@@ -22,11 +22,11 @@
     library(MAGeCKFlute)
     ## Load gene summary data in MAGeCK MLE results
     countsummary = read.delim("Cal27_NSD1KO.countsummary.txt", header=T, sep="\t")
-
+    ## View mapping ratio of each sample
     MapRatesView(countsummary)
-
+    ## View evenness of sgRNA reads in each sample
     IdentBarView(countsummary, x = "Label", y = "GiniIndex", ylab = "Gini index", main = "Evenness of sgRNA reads")
-
+    ## View number of missed sgRNAs in each sample
     countsummary$Missed = log10(countsummary$Zerocounts)
     IdentBarView(countsummary, x = "Label", y = "Missed", fill = "#394E80", ylab = "Log10 missed gRNAs", main = "Missed sgRNAs")
     ###############################################################
